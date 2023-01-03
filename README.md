@@ -9,7 +9,7 @@ Accelerate DevOps with GitHub 书籍翻译仓库
 
 书籍相关信息：
 - 原书出版实践：2022 年 9 月
-- Amazon 链接：https://www.amazon.com/dp/B0B4DW7NSL/ref=cm_sw_r_tw_dp_B4DR80D2BBERYNSQ5V9C
+- Amazon 链接：https://www.amazon.com/dp/B0B4DW7NSL/
 - 作者配套仓库：https://github.com/wulfland/AccelerateDevOps
 
 初步时间安排：
