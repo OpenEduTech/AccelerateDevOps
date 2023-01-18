@@ -20,3 +20,10 @@ Accelerate DevOps with GitHub 书籍翻译仓库
 - 2023 年 9 月 1 日：正式出版
 
 分工安排：[查看这里](https://github.com/OpenEduTech/AccelerateDevOps/issues/1)
+
+加入我们：
+
+1. Fork到个人账户下
+2. git clone 至本地
+3. 新建分支，进行本地修改及commit
+4. 提出Pull Request，请求合并入main分支
