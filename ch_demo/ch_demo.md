@@ -93,7 +93,7 @@ jobs:
 
 这些结果将在安全性|代码扫描警报下显示（参见*图15.1*）:
 
-![image-20230212161612036](image-20230211231135576.png)
+![image-20230212161612036](15-1.png)
 
 <center><p>图15.1-Checkov在GitHub中的结果</p></center>
 
@@ -141,7 +141,7 @@ Checkov非常适合检查IaC，但不能检查基础设施的变化。但是，�
 
 SBOM 作为工作流工件上传（参见*图15.2*）：
 
-![image-20230212201706267](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15-2.png)
+![image-20230212201706267](15-2.png)
 
 <center><p>图15.2-作为构建工件上传的SPDX SBOM</p></center>
 
@@ -188,7 +188,7 @@ SWID标签更多地用于**软件资产管理 (Software Asset Management, SAM)**
 
 读者可以在Linux仓库中查找**Linus Torvalds**的电子邮件地址，然后使用该电子邮件地址配置本地Git仓库，并将其提交到仓库。此提交的作者将显示为Linus（参见*图15.3*）：
 
-![image-20230212211217918](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15-3.png)
+![image-20230212211217918](15-3.png)
 
 > Any valid email address on GitHub links to the actual profile    任何有效的GitHub电子邮件地址都可以链接到实际的个人资料页面。
 >
@@ -200,19 +200,19 @@ SWID标签更多地用于**软件资产管理 (Software Asset Management, SAM)**
 
 头像中的链接也可以正常工作，并重定向到正确的个人主页。但是，与在服务器上进行的修改（通过在Web UI中修改文件或使用拉请求合并更改）不同，提交并没有被验证的徽章。验证徽章表示提交使用了**GNU隐私保护 (GNU Privacy Guard, GPG)** 密钥签名，该密钥包含了您帐户的已验证电子邮件地址（参见*图15.4*）。
 
-![image-20230212214957305](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15-4.png)
+![image-20230212214957305](15-4.png)
 
 <center><p>图15.4-签名提交在GitHub上有一个经过验证的徽章</p></center>
 
 如果想对提交进行签名，可以在本地创建GPG密钥（使用git commit -S）。当然，读者可以自由设置密钥中的名称和电子邮件地址，只需要与git config中配置的电子邮件和用户匹配即可。 只要不修改提交，签名就有效（参见*图15.5*）。
 
-![image-20230212215414107](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15-5.png)
+![image-20230212215414107](15-5.png)
 
 <center><p>图15.5-如果电子邮件和名称匹配，则本地签名提交有效</p></center>
 
 但是，即使将**Pretty Good Privacy (PGP)**密钥上传到GitHub配置文件 (https://github.com/settings/gpg/new)，提交也不会被验证，因为GitHub在已验证电子邮件地址的档案中查找密钥 (参见*图15.6*)：
 
-![image-20230212221218979](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15-6.png)
+![image-20230212221218979](15-6.png)
 
 > even a valid signed commit is unverified, if the mail address is associated with another GitHub handle   即使提交已经被签名，但如果电子邮件地址与另一个GitHub用户关联，则该提交也不会被验证。   
 >
@@ -245,13 +245,13 @@ SWID标签更多地用于**软件资产管理 (Software Asset Management, SAM)**
 
 也有一些开源解决方案，例如来自OWASP的**Zed Attack Proxy (ZAP)**（https://www.zaproxy.org/）。它是一个独立的应用程序，可以在Windows、macOS和Linux上运行（请参见https://www.zaproxy.org/download/），可用于攻击Web应用程序。该应用程序允许用户分析Web应用程序、拦截和修改流量，并使用ZAP Spider对网站或其部分进行攻击（参见*图15.7*）：
 
-![image-20230215192553457](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15_7.png)
+![image-20230215192553457](15_7.png)
 
 <center><p>图15.7-OWASP ZAP应用程序</p></center>
 
 OWASP ZAP启动一个浏览器并使用一个**提示显示器 (heads-up display, HUD)** 来在网站顶部显示控件。用户可以使用这些控件来分析站点、使用爬虫运行攻击、拦截请求，？？而无需其他应用程序的协助（参见*图15.8*）：
 
-![image-20230215193034234](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15-8.png)
+![image-20230215193034234](15-8.png)
 
 > OWASP ZAP intercepts the traffic OWASP ZAP拦截流量
 >
@@ -265,7 +265,7 @@ OWASP ZAP启动一个浏览器并使用一个**提示显示器 (heads-up display
 
 即使不是渗透测试人员，作为Web开发人员，开始学习如何使用OW ASP ZAP攻击自己的网站应该很容易。但是为了将安全性前移，应该将扫描集成到工作流中。OWASP ZAP在GitHub市场中有三个Actions（请参见*图15.9*）：
 
-![image-20230215194344374](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15-9.png)
+![image-20230215194344374](15-9.png)
 
 <center><p>图15.9-在 GitHub 市场中可用的 OWASP ZAP Actions</p></center>
 
@@ -280,7 +280,7 @@ OWASP ZAP启动一个浏览器并使用一个**提示显示器 (heads-up display
 
 该操作使用GItHub_TOKEN将结果写入GitHub Issue，它还将报告作为构建产物添加。报告有HTML、JSON或Markdown格式（参见*图15.10*）。
 
-![image-20230216144757922](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15_10.png)
+![image-20230216144757922](15_10.png)
 
 > A report is added as a build artifact in HTML,JSON and Markdown 一份报告将以 HTML、JSON 和 Markdown 的形式作为构建产物添加
 >
@@ -352,7 +352,7 @@ GitHub Actions非常有用，但它们是开发者执行的代码，并被授予
 
 *图15.11*展示了OIDC的工作原理概述：
 
-![image-20230216200305636](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15-11.png)
+![image-20230216200305636](15-11.png)
 
 <center><p>图15.11-与云服务商的OIDC集成</p></center>
 
@@ -382,7 +382,7 @@ $ az ad sp create --id <appId>
 
 然后，可以在AAD中打开应用程序注册，并在“证书和密码|联合凭据|添加凭据”下添加 OIDC 信任。请根据*图 15.12* 中的说明填写表单。
 
-![image-20230216202025993](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15-12.png)
+![image-20230216202025993](15-12.png)
 
 <center><p>图15.12-为应用程序注册创建OIDC信任</p></center>
 
@@ -430,7 +430,7 @@ permissions:
 
 为了确保从代码到生产的整个流水线的安全，开发者需要实时了解各个层面的情况。不同层面有不同的监控方案(参见*图15.13*):
 
-![image-20230216224840325](D:\文档\书籍翻译\AccelerateDevOps\ch_demo\15-13.png)
+![image-20230216224840325](15-13.png)
 
 > Security 安全
 >
