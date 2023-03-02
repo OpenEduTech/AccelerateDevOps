@@ -52,7 +52,7 @@ GitHub 包当前支持以下注册表：
 
 每种产品包含的存储量和数据传输量如表8.1所示：
 
-![col8-1](./chapter8.assets/col8-1.png)
+![col8-1](./col8-1.png)
 
 表8.1 GitHub产品中包的存储量和数据传输量
 
@@ -85,7 +85,7 @@ GitHub Enterprise Cloud  50GB   100GB
 
 发布到仓库的包将继承该仓库的权限和可见性。目前，只有容器包支持精细权限和访问控制（见图8.1）
 
-![fig8-1](./chapter8.assets/fig8-1.png)
+![fig8-1](./fig8-1.png)
 
 图8.1 — 管理对容器包的访问权限
 
@@ -95,7 +95,7 @@ GitHub Enterprise Cloud  50GB   100GB
 
 在组织级别，您可以设置成员允许发布的容器包类型，您也可以查看和恢复已删除的包（如图8.2所示）
 
-![fig8-2](./chapter8.assets/fig8-2.png)
+![fig8-2](./fig8-2.png)
 
 图8.2 — 组织级别的包的权限
 
@@ -154,7 +154,7 @@ publish-gpr:
 
 工作流程很简单，每当您在GitHub中创建一个新版本，都会将一个新包发布到您的npm注册表中。您可以在**Code | Packages**下找到包的详情与设置（如图8.3所示）。
 
-![fig8-3](./chapter8.assets/fig8-3.png)
+![fig8-3](./fig8-3.png)
 
 图8.3 — 包的详情与设置
 
@@ -321,7 +321,7 @@ build-push-action构建镜像并将其推送到容器注册表中。？？标签
 
 3. 新建一个版本和标签来触发工作流。工作流完成后，您可以在**Code | Packages**下找到包的详情和设置信息（如图8.4所示）。
 
-   ![fig8-4](./chapter8.assets/fig8-4.png)
+   ![fig8-4](./fig8-4.png)
 
 图8.4 — 容器包的详情和设置
 
