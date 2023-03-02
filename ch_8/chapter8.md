@@ -4,16 +4,16 @@
 
 
 
-在本章中，我将向您展示如何使用GitHub Packages来管理您的内部依赖，就像管理软件供应链一样。主要议题如下：
+本章节将主要介绍如何使用GitHub Packages来管理您的内部依赖，就像管理软件供应链一样。主要内容如下：
 
-- GitHub 包
+- GitHub包
 - 将npm包与Actions结合使用
-- 将Docker 和包结合使用
-- Apache Maven, Gradle, NuGet, and RubyGems 包
+- 将Docker和包结合使用
+- Apache Maven, Gradle, NuGet, and RubyGems包
 
 语义版本控制
 
-语义版本控制是指定软件版本号的正式约定，它由不同的部分组成，且各部分含义相异。语义版本号的示例为1. 0.0或1. 5.99-beta。格式如下:
+语义版本控制是指定软件版本号的正式约定，它由不同的部分组成，且各部分含义相异。语义版本号的示例为1.0.0或1.5.99-beta。格式如下:
 
 <主要>.<次要>.<补丁>-<预版本>
 
@@ -23,30 +23,30 @@
 
 补丁:如果您发布向后兼容的错误修复，将增加该数字标识符。用户应始终安装最新补丁。
 
-Pre-version:即使用连字符附加的文本标识符。该标识符只能使用 ASCII 字母、数字字符和连字符([0-9A-Za-z-])。文本越长，pre-version越小(即-alpha<-beta<-re).预发布版本总是比普通版本小(1.0.0-alpha < 1.0.0)。
+预版本:即使用连字符附加的文本标识符。该标识符只能使用 ASCII 字母、数字字符和连字符([0-9A-Za-z-])。文本越长，预版本越小(即-alpha<-beta<-re).预发布版本总是比普通版本小(1.0.0-alpha < 1.0.0)。
 
-请参阅 ht tps://semver.org/ 以查看完整的规范。
+请参阅 https://semver.org/ 以查看完整的规范。
 
-使用包并不自动意味着您在使用松散耦合的体系结构，这取决于您如何使用包来真正地解耦发布节奏。在大多数情况下，包仍然是硬依赖。
+使用包并不自动意味着您在使用松散耦合的体系结构，在大多数情况下，包仍然是硬依赖。这取决于您如何使用包来真正地解耦发布节奏。
 
-## GitHub Packages
+## GitHub包
 
-GitHub Packages是一个用来托管和管理包、容器以及其他依赖的平台。
+GitHub包是一个用来托管和管理包、容器以及其他依赖的平台。
 
-您可以将GitHub Packages与GitHub Actions、GitHub API 和web挂钩集成在一起，以创建一个端对端的工作流来发布和使用代码。
+您可以将GitHub包与GitHub Actions、GitHub API 和web挂钩集成在一起，以创建一个端对端的工作流来发布和使用代码。
 
-GitHub 包当前支持以下注册表：
+GitHub包当前支持以下注册表：
 
 - 支持**Docker** 和**OCI**镜像的**容器**注册表
-- 适用于使用npm的JavaScript的npm注册表 (package.json)
-- 适用于.NET的**NuGet**注册表 (nupRg)
+- 适用于使用npm的JavaScript的**npm**注册表(package.json)
+- 适用于.NET的**NuGet**注册表(nupRg)
 - 适用于Java的**Apache** **Maven**注册表(pom.xml)
-- 适用于Java的**Gradle注册表** (build.gradle)
+- 适用于Java的**Gradle**注册表 (build.gradle)
 - 适用于Ruby的**RubyGems**注册表(Gemfile)
 
 ### 价格
 
-对于公共包，GitHub Packages是免费的，而对于专用包，每个GitHub版本都包含一定数量的存储和数据传输，超出部分将单独收费，并且可以由支出限额进行控制。
+对于公共包，GitHub包是免费的，而对于专用包，每个GitHub版本都包含一定数量的存储和数据传输，超出部分将单独收费，并且可以由支出限额进行控制。
 
 按月计费的客户的默认支出限额为0美元，这可以防止额外使用存储或数据传输，使用发票支付的客户具有无限制的默认支出限额。
 
@@ -56,17 +56,17 @@ GitHub 包当前支持以下注册表：
 
 表8.1 GitHub产品中包的存储量和数据传输量
 
-产品               存储量           数据传输（每月）
+产品                          存储量           数据传输量（每月）
 
-GitHub Free  500MB          1GB
+GitHub Free                   500MB             1GB
 
-GitHub Pro    2GB               10GB
+GitHub Pro                    2GB               10GB
 
-GitHub Free for organizations 500MB  1GB
+GitHub Free for organizations 500MB             1GB
 
-GitHub Team 2GB               10GB
+GitHub Team                   2GB               10GB
 
-GitHub Enterprise Cloud  50GB   100GB 
+GitHub Enterprise Cloud       50GB              100GB 
 
 
 
@@ -83,7 +83,7 @@ GitHub Enterprise Cloud  50GB   100GB
 
 ### 权限和可见性
 
-发布到仓库的包将继承该仓库的权限和可见性。目前，只有容器包支持精细权限和访问控制（见图8.1）
+发布到仓库的包将继承拥有该包的仓库的权限和可见性。目前，只有容器包支持精细权限和访问控制（见图8.1）
 
 ![fig8-1](./chapter8.assets/fig8-1.png)
 
@@ -101,7 +101,7 @@ GitHub Enterprise Cloud  50GB   100GB
 
 对于个人账户拥有的容器镜像，您可以将访问角色授予给任何人。对于组织发布和拥有的容器镜像，您只能向组织中的个人或团队授予访问角色。
 
-有关权限和可见行的更多详情，可参阅https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility.
+有关权限和可见性的更多详情，可参阅https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility.
 
 ## 将npm和Actions结合使用
 
@@ -113,43 +113,43 @@ GitHub Enterprise Cloud  50GB   100GB
 
 ```
 on:
- release:
- types: [created]
+  release:
+    types: [created]
 ```
 
 工作流由两个作业组成。第一个作业只使用npm构建和测试包：
 
 ```
  build:
- runs-on: ubuntu-latest
- steps:
- - uses: actions/checkout@v2
- - uses: actions/setup-node@v2
- with:
- node-version: 12
- - run: npm ci
- - run: npm test
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v2
+     - uses: actions/setup-node@v2
+     with:
+       node-version: 12
+     - run: npm ci
+     - run: npm test
 ```
 
-第二个作业将镜像发布到仓库中，这需要编写包和读取内容的权限，使用${{ secrets.GITHUB_TOKEN }}向注册表进行身份验证。
+第二个作业将镜像发布到注册表中，这需要编写包和读取内容的权限，使用${{ secrets.GITHUB_TOKEN }}向注册表进行身份验证。
 
 ```
 publish-gpr:
- needs: build
- runs-on: ubuntu-latest
- permissions:
- packages: write
- contents: read
- steps:
- - uses: actions/checkout@v2
- - uses: actions/setup-node@v2
- with:
- node-version: 12
- registry-url: https://npm.pkg.github.com/
- - run: npm ci
- - run: npm publish
- env:
- NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  needs: build
+  runs-on: ubuntu-latest
+  permissions:
+    packages: write
+    contents: read
+  steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 12
+        registry-url: https://npm.pkg.github.com/
+    - run: npm ci
+    - run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
 
 工作流程很简单，每当您在GitHub中创建一个新版本，都会将一个新包发布到您的npm注册表中。您可以在**Code | Packages**下找到包的详情与设置（如图8.3所示）。
@@ -162,43 +162,43 @@ publish-gpr:
 
 > 注意
 >
-> 请注意包的版本不是标签或者版本，而是package.json文件中的版本。如果您在创建第二个版本之前不将其更新，工作流将会失败。
+> 请注意包的版本不是标签或者发布版本，而是package.json文件中的版本。如果您在创建第二个版本之前不将其更新，工作流将会失败。
 
 如果您想要自动执行此操作，有一些操作可以提供帮助。您可以使用**NPM-Version**(参阅https://github.com/marketplace/actions/npm-version)在发布前自动设置npm的版本。您可以将版本名称（github.event.release.name)或版本标签(github.event.release.tag_name)设置为包的版本：
 
 ```
 - name: 'Change NPM version'
- uses: reedyuk/npm-version@1.1.1
- with:
- version: ${{github.event.release.tag_name}}
+  uses: reedyuk/npm-version@1.1.1
+  with:
+    version: ${{github.event.release.tag_name}}
 ```
 
 如果您想要一种更灵活的方式来根据标签及分支计算语义版本号，可以使用**GitVersion**(参阅https://gitversion.net/)。**GitVersion**是**GitTools**操作的一部分(参阅https://github.com/marketplace/actions/gittools)
 
-要使**GitVersion**正常运行，必须执行所谓的**浅克隆**，可以通过将fetch-depth参数添加到？？checkout操作中并将其设置为0：
+要使**GitVersion**正常运行，必须执行所谓的**浅克隆**，可以通过将fetch-depth参数添加到checkout操作中并将其设置为0：
 
 ```
 steps:
  - uses: actions/checkout@v2
- with: 
- fetch-depth:0
+   with: 
+     fetch-depth:0
 ```
 
 然后，下载**GitVersion**并运行execute操作。如果想要获取语义版本的详细信息，请设置一个id。
 
 ```
 - name: Install GitVersion
- uses: gittools/actions/gitversion/setup@v0.9.7
- with:
- versionSpec: '5.x'
+  uses: gittools/actions/gitversion/setup@v0.9.7
+  with:
+  versionSpec: '5.x'
  
  - name: Determine Version
- id: gitversion
- uses: gittools/actions/gitversion/execute@v0.9.7
+   id: gitversion
+   uses: gittools/actions/gitversion/execute@v0.9.7
  
 ```
 
-最终计算出的语义版本号存储为环境变量$GITVERSION_SEMVER。例如，您可以将其作为npm-version的输入。
+最终计算出的语义版本号存储为环境变量$GITVERSION_SEMVER。例如，您可以将其作为**npm-version**的输入。
 
 > 注意
 >
@@ -208,30 +208,28 @@ steps:
 
 ```
  - name: Display GitVersion outputs
- run: |
- echo "Major: ${{ steps.gitversion.outputs.major }}"
+   run: |
+     echo "Major: ${{ steps.gitversion.outputs.major }}"
 ```
 
-使用**GitVersion**，您可以扩展工作流，从分支或标签中创建包——而不仅仅是发布版本：
+使用**GitVersion**，您可以扩展工作流，从分支或标签中创建包————而不仅仅是发布版本：
 
 ```
 on:
  push: 
- tags:
- - 'v*'
- branches:
- - 'release/*'
+   tags:
+     - 'v*'
+   branches:
+     - 'release/*'
 ```
 
-使用自动语义版本控制来构建发布工作流很复杂，并且很大程度上依赖于您所使用的工作流和包管理器。本章应该可以帮助您入门。这些技术还可以应用于NuGet、Maven或其他任何包管理器。
+使用自动语义版本控制来构建发布工作流很复杂，并且很大程度上依赖于您所使用的工作流和包管理器。本章应该可以帮助您入门。这些技术还可以应用于**NuGet**、**Maven**或其他任何包管理器。
 
 ## 将Docker和包结合使用
 
 GitHub的容器注册表是ghcr.io。容器镜像可以由组织或个人账户所持有，但您可以自定义对它们的访问权限。默认情况下，镜像继承运行工作流的仓库的权限及可见性模型。
 
-如果您想要自己尝试以下，可以在此处找到分步指南：https://
-
-github.com/wulfland/container-demo。按照以下步骤理解构建的作用：
+如果您想要自己尝试以下，可以在此处找到分步指南：https://github.com/wulfland/container-demo。按照以下步骤理解构建的作用：
 
 1. 新建一个名为container-demo的仓库，添加一个简单的Dockerfile文件（不带扩展名）
 
@@ -254,7 +252,7 @@ $ docker run --rm container-demo
 
 \- - rm参数的作用是在容器结束后将其自动删除。这里应该在您的控制台中打印Hello World!
 
-2. 现在在.github/ workflows/目录下创建一个名为release-container.yml的工作流文件。每次创建新版本时都会触发工作该流：
+2. 现在在.github/workflows/目录下创建一个名为release-container.yml的工作流文件。每次创建新版本时都会触发工作该流：
 
 ```
 name: Publish Docker image
@@ -279,11 +277,11 @@ jobs:
  build-and-push-image:
  runs-on: ubuntu-latest
  permissions:
- contents: read
- packages: write
+   contents: read
+   packages: write
  steps:
- - name: Checkout repository
- uses: actions/checkout@v2
+   - name: Checkout repository
+     uses: actions/checkout@v2
 ```
 
 docker/login-action 使用GITHUB_TOKEN来对工作流进行验证。这是推荐的方式：
@@ -292,31 +290,31 @@ docker/login-action 使用GITHUB_TOKEN来对工作流进行验证。这是推荐
 - name: Log in to the Container registry
  uses: docker/login-action@v1.10.0
  with:
- registry: ${{ env.REGISTRY }}
- username: ${{ github.actor }}
- password: ${{ secrets.GITHUB_TOKEN }}
+   registry: ${{ env.REGISTRY }}
+   username: ${{ github.actor }}
+   password: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 metadata-action从Git上下文中提取元数据，并将标签应用于Docker镜像。每当我们创建一个版本，将会推送一个标签**(refs** /tags / < tag-name >)。该操作将创建一个与Git标签同名的Docker 标签，并为镜像创建一个latest标签。请注意，元数据是作为输出变量传递给下一个步骤！这就是我为这一步设置id的原因：
 
 ```
 - name: Extract metadata (tags, labels)
- id: meta
- uses: docker/metadata-action@v3.5.0
- with:
- images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+  id: meta
+  uses: docker/metadata-action@v3.5.0
+  with:
+    images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 ```
 
 build-push-action构建镜像并将其推送到容器注册表中。？？标签(tag)和？？标记(label)是从meta步骤的输出中提取的：
 
 ```
 - name: Build and push Docker image
- uses: docker/build-push-action@v2.7.0
- with:
- context: .
- push: true
- tags: ${{ steps.meta.outputs.tags }}
- labels: ${{ steps.meta.outputs.labels }}
+  uses: docker/build-push-action@v2.7.0
+  with:
+    context: .
+    push: true
+    tags: ${{ steps.meta.outputs.tags }}
+    labels: ${{ steps.meta.outputs.labels }}
 ```
 
 3. 新建一个版本和标签来触发工作流。工作流完成后，您可以在**Code | Packages**下找到包的详情和设置信息（如图8.4所示）。
@@ -350,9 +348,9 @@ $ docker n --rm ghcr.io/<user>/container-demo:latest
 ```
 <distributionManagement>
  <repository>
- <id>github</id>
- <name>GitHub Packages</name>
- <url>https://maven.pkg.github.com/user/repo</url>
+   <id>github</id>
+   <name>GitHub Packages</name>
+   <url>https://maven.pkg.github.com/user/repo</url>
  </repository>
 </distributionManagement>
 ```
@@ -361,9 +359,9 @@ $ docker n --rm ghcr.io/<user>/container-demo:latest
 
 ```
 - name: Publish package
- run: mvn --batch-mode deploy
- env:
- GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  run: mvn --batch-mode deploy
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 如果想要从您的开发机中检索包，必须使用具有read: packages范围的**个人访问令牌（PAT）**。您可以在**Settings | DeveloperSettings | Personal access tokens**下生成一个新令牌，并添加您的用户和PAT至-/.m2/ settings.xml文件中。
@@ -377,11 +375,11 @@ $ docker n --rm ghcr.io/<user>/container-demo:latest
 ```
 repositories {
  maven {
- name = "GitHubPackages"
- url = "https://maven.pkg.github.com/user/repo"
- credentials {
- username = System.getenv("GITHUB_ACTOR")
- password = System.getenv("GITHUB_TOKEN")
+   name = "GitHubPackages"
+   url = "https://maven.pkg.github.com/user/repo"
+   credentials {
+     username = System.getenv("GITHUB_ACTOR")
+     password = System.getenv("GITHUB_TOKEN")
  }
  }
 }
@@ -391,23 +389,23 @@ repositories {
 
 ```
 - name: Publish package
- run: gradle publish
- env:
- GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  run: gradle publish
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 更多详细信息，请参阅https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry。
 
 ### RubyGems
 
-如果您想在仓库中为.gemspec文件构建和发布所有gem，可以使用来自？？市场（supermarket）的操作：
+如果您想在仓库中为.gemspec文件构建和发布所有gem，可以使用GitHub上的marketplace中的操作：
 
 ```
 - name: Build and publish gems got .gemspec files
- uses: jstastny/publish-gem-to-github@master
- with:
- token: ${{ secrets.GITHUB_TOKEN }}
- owner: OWNER
+  uses: jstastny/publish-gem-to-github@master
+  with:
+    token: ${{ secrets.GITHUB_TOKEN }}
+    owner: OWNER
 ```
 
 要使用包，您至少需要RubyGems 2.4.1和bundler 1.6.4的环境。修改～/. gemrc文件，并通过提供用户名和个人访问令牌来添加注册表，并将其作为源文件来安装包：
@@ -450,8 +448,8 @@ USERNAME:TOKEN
 
 ```
 - run: |
- dotnet pack --configuration Release
- dotnet nuget push "bin/Release/*.nupkg"
+  dotnet pack --configuration Release
+  dotnet nuget push "bin/Release/*.nupkg"
 ```
 
 要安装包，您必须将注册表作为源文件添加到nuget. config文件中，以及您的用户和令牌：
@@ -459,16 +457,16 @@ USERNAME:TOKEN
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
- <packageSources>
- <add key="github" value="https://nuget.pkg.github.com/
+      <packageSources>
+         <add key="github" value="https://nuget.pkg.github.com/
 OWNER/index.json" />
- </packageSources>
- <packageSourceCredentials>
- <github>
- <add key="Username" value="USERNAME" />
- <add key="ClearTextPassword" value="TOKEN" />
- </github>
- </packageSourceCredentials>
+   </packageSources>
+   <packageSourceCredentials>
+      <github>
+         <add key="Username" value="USERNAME" />
+         <add key="ClearTextPassword" value="TOKEN" />
+      </github>
+   </packageSourceCredentials>
 </configuration>
 ```
 
