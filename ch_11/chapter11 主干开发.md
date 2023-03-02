@@ -53,7 +53,7 @@
 
 Gitflow 仍然是最流行的工作流之一。它由 Vincent Driessen于2010年推出(参见https://nvie.com/posts/a-successful-git-branching-mode1/)并流行开来。**Gitflow**有一个很好的海报，它对如何解决 git 中的问题进行了描述性的介绍，例如如何使用标签发布和处理合并后删除的分支(见图 11.1)：
 
-![fig11-1](./%E7%AC%AC11%E7%AB%A0%20%E4%B8%BB%E5%B9%B2%E5%BC%80%E5%8F%91.assets/fig11-1.png)
+![fig11-1](./fig11-1.png)
 
 main                                         主分支
 
@@ -89,7 +89,7 @@ Figure 11.1 — Gitflow overview        图11.1 GitFlow 概览
 
 GitHub flow非常注重与PR的合作。首先，您创建一个具有描述性名字的分支并进行第一次变更，然后，您创建一个PR并通过代码的审阅意见与审阅者合作。一旦PR准备就绪，它会在合并到主分支之前被传送到生产环境。（参见图11.2）
 
-![fig11-2](./%E7%AC%AC11%E7%AB%A0%20%E4%B8%BB%E5%B9%B2%E5%BC%80%E5%8F%91.assets/fig11-2.png)
+![fig11-2](./fig11-2.png)f
 
 Create branch                创建分支
 
@@ -115,7 +115,7 @@ GitHub 本身使用 ChatOps 和部署？？列车（trains）来解决这个问�
 
 发布流基于GitHub流，但它不是连续部署PR，而是添加单向发布分支。分支不会合并，并且修复遵循上游优先原则：错误在基于main分支的一个分支中修复后，更改被拣选到发布分支中的一个分支里（Edward Thomson，2018）。这样，就不可能忘记对main分支进行错误修复了（参见图11.3）:
 
-![fig11-3](./%E7%AC%AC11%E7%AB%A0%20%E4%B8%BB%E5%B9%B2%E5%BC%80%E5%8F%91.assets/fig11-3.png)
+![fig11-3](./fig11-3.png)
 
 main                                     主分支
 
@@ -139,7 +139,7 @@ Figure 11.3 — Release flow        图11.3 发布流
 
 GitLab流程也基于GitHub流程。它添加了环境分支（例如开发，暂存，预生产以及生产），并且每次部署都是在合并到这些环境时发生的（参见图11.4）。
 
-![fig11-4](./%E7%AC%AC11%E7%AB%A0%20%E4%B8%BB%E5%B9%B2%E5%BC%80%E5%8F%91.assets/fig11-4.png)
+![fig11-4](./fig11-4.png)
 
 production                           生产分支
 
@@ -182,7 +182,7 @@ MyFlow 是一个基于 PR 的轻量级、基于主干的工作流。它不是新
 
 图11.5展示了Myflow的基本概念：
 
-![fig11-5](./%E7%AC%AC11%E7%AB%A0%20%E4%B8%BB%E5%B9%B2%E5%BC%80%E5%8F%91.assets/fig11-5.png)
+![fig11-5](./fig11-5.png)
 
 main                              主分支
 
@@ -377,7 +377,7 @@ $ git push
 
 这将拣选主题分支的最近一次提交。图11.6展示了针对旧发布的修补程序是如何工作的：
 
-![fig11-6](./%E7%AC%AC11%E7%AB%A0%20%E4%B8%BB%E5%B9%B2%E5%BC%80%E5%8F%91.assets/fig11-6.png)
+![fig11-6](./fig11-6.png)
 
 Tag: v1.1 Release v1.1                       标签：v1.1.  版本 v1.1
 
