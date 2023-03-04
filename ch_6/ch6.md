@@ -773,5 +773,5 @@ Marketplace使自动化变得简单，因为几乎所有事件都可以看作为
 - *GitHub Actions*: https://github.com/features/actions、
   https://docs.github.com/en/actions
 - *GitHub Learning Lab*: https://lab.github.com
-- *工作流语法*: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+- *Workflow Syntax*: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
 - *GitHub Marketplace*: https://github.com/marketplace
