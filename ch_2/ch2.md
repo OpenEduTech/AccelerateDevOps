@@ -8,7 +8,7 @@
 
 - 工作就是工作
 - 非计划的工作和返工
-- 可视化工作
+- 可视化你的工作
 - 限制在制品(work in progress,WIP)
 - GitHub的问题(issue)、标签(label)和里程碑(milestone)
 - GitHub项目
