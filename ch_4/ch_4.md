@@ -424,4 +424,8 @@ GitHub移动版是一个很好的工具，即使开发者不在办公室，也�
 - Work trend index: https://www.microsoft.com/en-us/worklab/work-trend-index
 - GitHub Discussions: https://docs.github.com/en/discussions
 - GitHub Pages: https://docs.github.com/en/pages
+<<<<<<< HEAD
 - GitHub Mobile: https://github.com/mobile
+=======
+- GitHub Mobile: https://github.com/mobile
+>>>>>>> 1e52a1b7d187da5cc97c721da176d025e329252b
