@@ -1,6 +1,6 @@
 # 第6章 使用Github Actions实现自动化
 
-许多？？敏捷实践认为工程实践不如管理和团队实践重要。但是持续集成(CI)、持续交付(CD)和基础设施即代码(IaC)等工程能力可以实现更频繁、更稳定和更低风险的发布(Humble, J., &amp; Farley, D. 2010)。这些做法降低了部署的难度，从而更少地加班，使工作更加轻松。
+很多敏捷方法的采用者认为工程实践不如管理和团队实践重要。但是像持续集成(CI)、持续交付(CD)和基础设施即代码(IaC)等工程能力是实现更频繁、更稳定和更低风险的发布的支撑因素(Humble, J., &amp; Farley, D. 2010)。这些做法降低了部署的难度，从而更少地加班，使工作更加轻松。
 
 从本质上讲，这些做法都与自动化有关，即让计算机执行重复任务，使人们可以专注于解决重要问题和进行一些创造性工作。
 
@@ -8,7 +8,7 @@
 
 *Forsgren, N., Humble, J., & Kim, G. 2018*
 
-自动化对企业文化和人们的工作方式有很大的影响，因为很多？？习惯都是为了避免手动、重复的任务而养成的，尤其是一些非常容易出错的任务。本章将介绍GitHub自动化引擎——GitHub Actions，该引擎具有包括CI/CD在内的多种功能。
+自动化对企业文化和人们的工作方式有很大的影响，因为许多习惯是为了避免手动、重复的任务而养成的，尤其是一些非常容易出错的任务。本章将介绍GitHub自动化引擎——GitHub Actions，该引擎具有包括CI/CD在内的多种功能。
 
 本章将包含以下话题：
 
@@ -63,7 +63,7 @@ GitHub**工作流**是一个可配置的自动化过程，由不同的**作业**
 
 ## YAML基础
 
-工作流是用扩展名为 *.yml*或 *.yaml*的YAML文件编写的。**YAML**是“*YAML Ain&#39;t Markup Language*”的缩写，？？是一种优化后的可供人类直接写入和读取的数据序列化语言。它是**JSON**的严格超集，？？但把大括号替换为了换行符和缩进。与markdown一样，它也适用于拉取请求，因为更改总是以行为单位。以下将介绍一些可以帮助你入门的YAML基础。
+工作流是用扩展名为 *.yml*或 *.yaml*的YAML文件编写的。**YAML**(即*YAML Ain&#39;t Markup Language*)是一种优化后的可供人类直接写入和读取的数据序列化语言。它是**JSON**的严格超集，但是使用换行符和缩进代替大括号进行语法表示。与markdown一样，它也适用于拉取请求，因为更改总是以行为单位。以下将介绍一些可以帮助你入门的YAML基础知识。
 
 ### 注释
 
@@ -285,7 +285,7 @@ jobs:
     runs-on: ubuntu-latest
 ```
 
-如果要运行具有不同配置的工作流，可以使用**矩阵策略**。？？工作流将执行配置矩阵值的所有组合对应的多个作业，矩阵中的键可以是任意值，你可以使用 *${{ matrix.key }}* 表达式进行引用：
+如果要运行具有不同配置的工作流，可以使用**矩阵策略**。工作流将执行配置矩阵值的所有组合对应的多个作业，矩阵中的键可以是任意值，你可以使用 *${{ matrix.key }}* 表达式进行引用：
 
 ```yaml
 strategy:
@@ -430,7 +430,7 @@ steps:
 > | 函数        | 描述                                                         |
 > | ----------- | ------------------------------------------------------------ |
 > | success()   | 如果前面的步骤都没有失败或取消，则返回true                   |
-> | always()    | ？？如果之前某个步骤被取消就会导致该步骤被一直执行，并返回true |
+> | always()    | 如果之前某个步骤被取消就会导致该步骤被一直执行，并返回true |
 > | cancelled() | 如果工作流被取消，则返回true                                 |
 > | failure()   | 如果该作业之前的某一步骤失败，则返回true                     |
 
@@ -467,7 +467,7 @@ steps:
   run: echo "It is ${{ steps.time-gen.outputs.MY_TIME }}"
 ```
 
-另一个例子是 *::error* ？？命令，可以将错误消息写入日志。该命令还有一些可选配置参数，可以设置文件名、行号和列号：
+另一个例子是 *::error* 命令，可以将错误消息写入日志。该命令还有一些可选配置参数，可以设置文件名、行号和列号：
 
 ```yaml
 ::error file={name},line={line},col={col}::{message}
@@ -509,7 +509,7 @@ steps:
 $ gh secret set secret-name
 ```
 
-输入以上命令后你将得到一个新密钥。你可以从文件中读取密钥，？？并通过管道命令设置密钥，也可以将其指定为密钥的主体（-b 或 --body）：
+输入以上命令后你将得到一个新密钥。你可以从文件中读取密钥，将其传输到命令中，也可以将其指定为密钥的主体（-b 或 --body）：
 
 ```bash
 $ gh secret set secret-name < secret.txt
@@ -528,7 +528,7 @@ $ gh secret set secret-name --org org -v selected -r repo
 
 ### 获取密钥
 
-你可以在工作流中通过*secrets*上下文获取密钥，将其作为工作流文件的一个**输入** (*with:*) 或**环境变量**(*env:*) 添加到步骤中。当工作流？？在队列中时，会读取组织和仓库密钥，而当一个？？引用环境的作业开始时，会读取环境密钥。
+你可以在工作流中通过*secrets*上下文获取密钥，将其作为工作流文件的一个**输入** (*with:*) 或**环境变量**(*env:*) 添加到步骤中。当工作流？？在队列中时，会读取组织和仓库密钥，而在引用环境的作业开始时，会读取环境密钥。
 
 > 笔记Note：
 >
@@ -556,11 +556,11 @@ steps:
 
 > 笔记Note：
 >
-> 以上示例向你展示了如何将密钥传递给操作。如果你的工作流步骤是*run:*，也可以通过 *${{secrets.secret-name}}* 直接访问密钥上下文。如果你希望避免脚本注入风险，则不建议这样做。但由于只有管理员可以添加密钥，？？在评估工作流可读性时需要考虑这点。
+> 以上示例向你展示了如何将密钥传递给操作。如果你的工作流步骤是*run:*，也可以通过 *${{secrets.secret-name}}* 直接访问密钥上下文。如果你希望避免脚本注入风险，则不建议这样做。但由于只有管理员可以添加密钥，在评估工作流可读性时需要考虑这点。
 
 ### GITHUB_TOKEN密钥
 
-*GITHUB_TOKEN*密钥是一种特殊的密钥，该密钥是自动创建的，可以通过*github.token*或 *secrets.GITHUB_TOKEN*？？上下文获取。即使工作流没有将其作为输入或环境变量，也可以通过GitHub操作获取它。该令牌可用于在访问GitHub资源时进行身份验证，资源的默认权限可以设置为*permissive*或*restricted*，在工作流中可以调整这些权限：
+*GITHUB_TOKEN*密钥是一种特殊的密钥，该密钥是自动创建的，可以通过*github.token*或 *secrets.GITHUB_TOKEN*上下文访问。即使工作流没有将其作为输入或环境变量，也可以通过GitHub操作获取它。该令牌可用于在访问GitHub资源时进行身份验证，资源的默认权限可以设置为*permissive*或*restricted*，在工作流中可以调整这些权限：
 
 ```yaml
 on: pull_request_target
@@ -588,7 +588,7 @@ jobs:
 >
 > 你可以使用GitHub的代码搜索，设置编程语言过滤条件(*language:yml*)和工作流路径过滤条件(*path:.github/workflows*)，来筛选找到一些现有的GitHub Actions工作流作为模板。
 >
-> 比如以下搜索请求将返回德国Corona-Warn-App？？项目的所有工作流：
+> 比如以下搜索请求将返回德国Corona-Warn-App项目的所有工作流程：
 >
 > *language:yml path:.github/workflows @corona-warn-app*
 
@@ -596,7 +596,7 @@ jobs:
 
 1. 进入仓库主页(链接 https://github.com/wulfland/getting-started ) ，点击右上角的**Fork**按钮进行将该仓库克隆到个人账号中。
 
-2. 在克隆得到的仓库主页，点击**Actions**选项卡，就能看到所有可使用的工作流模板，？？展示的模板已针对仓库内代码进行了优化。在本示例中，选择.NET模板，点击**Set up this workflow**按钮：
+2. 在克隆得到的仓库主页，点击**Actions**选项卡，就能看到所有可使用的工作流模板，这些模板针对仓库内代码进行了优化。在本示例中，选择.NET模板，点击**Set up this workflow**按钮：
 ![Figure6-2](figure6-2.png) 
 
 3. GitHub会在编辑器中创建并打开一个相应的工作流文件，该编辑器支持语法高亮和自动补全（按*Ctrl + Space*），你也可以在右侧的Marketplace窗口内搜索操作。接着将*dotnet-version*参数设置为3.1.x并提交该工作流文件：
@@ -616,7 +616,7 @@ jobs:
 
 ![Figure6-6](figure6-6.png)
 
-Github中有大量的模板，所以可以较容易地？？设置一个基本工作流来构建你的代码。
+Github中有大量的模板，所以可以较容易地设置一个基本工作流来构建你的代码。
 
 ## 动手实践-你的第一个操作
 
@@ -628,7 +628,7 @@ GitHub Actions的强大之处在于它的可重用性，因此了解如何创建
 
 具体步骤如下：
 
-1. 创建一个名为*hello-world-docker-action*的新仓库，接着将其克隆到你的？？主机上。
+1. 创建一个名为*hello-world-docker-action*的新仓库，接着将其克隆到你的主机上。
 
 2. 打开终端并进入仓库目录：
    ```bash
@@ -692,7 +692,7 @@ GitHub Actions的强大之处在于它的可重用性，因此了解如何创建
    $ git commit -m "My first action is ready"
    ```
 
-   在Windows系统上，以上命令？？无效，但可以在将文件添加到？？索引时把其标记为可执行文件：
+   在Windows系统上，上述命令无效，但是当文件被添加到索引中时，你可以将其标记为可执行文件：
    ```bash
    $ git add .
    $ git update-index --chmod=+x .\entrypoint.sh
@@ -705,7 +705,7 @@ GitHub Actions的强大之处在于它的可重用性，因此了解如何创建
    $ git push --follow-tags
    ```
 
-8. 你的操作现在可以在工作流中进行？？测试了。进入getting-started仓库(.github/workflows/dotnet.yaml) 中的工作流目录并编辑该文件，删除*jobs*（第 9 行）下的所有内容，替换为：
+8. 你的操作现在可以在工作流中进行测试了。进入getting-started仓库(.github/workflows/dotnet.yaml) 中的工作流目录并编辑该文件，删除*jobs*（第 9 行）下的所有内容，替换为：
    ```yaml
    hello_world_job:
      runs-on: ubuntu-latest
@@ -720,17 +720,16 @@ GitHub Actions的强大之处在于它的可重用性，因此了解如何创建
        run: echo "The time was ${{ steps.hello.outputs.time}}"
    ```
 
-   工作流现在会调用你的操作（uses）并？？指向你创建的仓库（your-username/hello-world-action），？？后面跟着标签(@v1)。它将你的姓名作为一个输入参数传给该操作，并获取当前时间作为输出，然后将其输出到控制台。
+   工作流现在会调用你的操作（uses）并指向你创建的仓库（your-username/hello-world-action），后面跟着标签(@v1)。它将你的姓名作为一个输入参数传给该操作，并获取当前时间作为输出，然后将其输出到控制台。
 
-9. 最后保存文件，工作流将自动运行。检查作业的详细信息，你可以看到日志中输出的？？问候语和时间戳。
+9. 最后保存文件，工作流将自动运行。检查作业的详细信息，你可以看到日志中输出的问候语和时间戳。
 
 > 提示Tips：
 >
 > 如果你想尝试其他类型的操作，可以使用现有模板；如果您想尝试JavaScript操作，可参考 https://github.com/actions/javascript-action ；如果您想尝试TypeScript操作，可参考 https://github.com/actions/typescript-action 。
 >
-> 复合操作更加？？容易，因为只需要一个action.yml文件（可参考 https://docs.github.com/en/actions/creatingactions/creating-a-composite-action ）。
->
-> ？？处理操作是一样的，只是它们的创建方法不同。
+> 复合操作更加容易，因为只需要一个action.yml文件（可参考 https://docs.github.com/en/actions/creatingactions/creating-a-composite-action)。<br>
+>处理操作是一样的，只是它们的创建方法不同。
 
 ## GitHub Marketplace
 
@@ -742,7 +741,7 @@ GitHub Actions的强大之处在于它的可重用性，因此了解如何创建
 
 ![Figure6-8](figure6-8.png)
 
-发布操作到Marketplace上很容易。首先要确保该操作位于公开仓库中，其名称是唯一的，并且该仓库内有一个？？描述清楚的*README*文件。接着选择一个图标和图标颜色并将其添加到*action.yml*文件中：
+发布操作到Marketplace上很容易。首先要确保该操作位于公开仓库中，其名称是唯一的，并且该仓库内有一个描述清楚的*README*文件。接着选择一个图标和图标颜色并将其添加到*action.yml*文件中：
 
 ```yaml
 branding:
@@ -750,19 +749,19 @@ branding:
   color: 'green'
 ```
 
-GitHub会自动检测*action.yml*文件并？？提供一个“Draft a release”按钮，点击此按钮会进入发布编辑页面。如果你选择将此操作发布到GitHub Marketplace，则必须同意服务条款，并且Github将自动检查该操作是否包含所有必需的组件。在发布编辑页面可以为该发布选择合适的标签或创建一个新标签，并为其添加标题和描述信息：
+GitHub会自动检测*action.yml*文件并提供一个“Draft a release”按钮，点击此按钮会进入发布编辑页面。如果你选择将此操作发布到GitHub Marketplace，则必须同意服务条款，并且Github将自动检查该操作是否包含所有必需的组件。在发布编辑页面可以为该发布选择合适的标签或创建一个新标签，并为其添加标题和描述信息：
 
 ![Figure6-9](figure6-9.png)
 
-最后发布操作或将其保存为？？草稿。
+最后发布操作或将其保存为草稿。
 
-Marketplace使自动化变得简单，因为几乎所有？？事件都可以看作为一个操作，所以近年来它迅速发展。
+Marketplace使自动化变得简单，因为几乎所有事件都可以看作为一个操作，所以近年来它迅速发展。
 
 ## 总结
 
 本章解释了自动化的重要性，介绍了GitHub Actions——一种灵活、可扩展且适用于任何类型自动化的引擎。
 
-在下一章中，你将学习不同的托管？？选项以及如何托管工作流运行器。
+在下一章中，你将学习不同的托管选项以及如何托管工作流运行器。
 
 ## 拓展阅读
 
@@ -774,5 +773,5 @@ Marketplace使自动化变得简单，因为几乎所有？？事件都可以看
 - *GitHub Actions*: https://github.com/features/actions、
   https://docs.github.com/en/actions
 - *GitHub Learning Lab*: https://lab.github.com
-- *工作流语法*: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+- *Workflow Syntax*: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
 - *GitHub Marketplace*: https://github.com/marketplace
